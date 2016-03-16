@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
+/**
+ * This component is a single TodoItem
+ */
 class TodoItem extends Component {
+
 
   handleComplete() {
     this.props.actions.completeTodo(this.props.todo.id)
@@ -14,12 +18,11 @@ class TodoItem extends Component {
     return (
       <li>
         <div>{this.props.todo.text}</div>
-        <button onClick={this.handleComplete.bind(this)}>Mark as completed</button>
-        <button onClick={this.handleDelete.bind(this)}>Delete todo</button>
+        <button onClick={this.handleComplete.bind(this)}>Done</button>
+        <button onClick={this.handleDelete.bind(this)}>Delete</button>
       </li>
     )
   }
-
 }
 
 export default TodoItem

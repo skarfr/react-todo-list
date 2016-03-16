@@ -1,0 +1,68 @@
+/**
+ * This file is the action creator
+ * Every actions need at least a type and optional extra parameters
+ */
+
+let actions = {
+
+  /**
+   * Action Add Todo
+   * @param text The Todo text
+   * @returns {{type: string, text: *}}
+   */
+  addTodo: function(text) {
+    return {
+      type: "ADD_TODO",
+      text: text
+    }
+  },
+
+  completeTodo: function(id) {
+    return {
+      type: "COMPLETE_TODO",
+      id: id
+    }
+  },
+
+  deleteTodo: function(id) {
+    return {
+      type: "DELETE_TODO",
+      id: id
+    }
+  },
+
+  createNewUserId: function(){
+    return {
+      type: "CREATE_USER_ID",
+      id: Math.floor(Math.random()* 100)
+    }
+  },
+
+  createNewUserIdOdd: function() {
+    return (dispatch, getState) => {
+      const { user } = getState()
+      if(user.id % 2 === 0) return;
+      dispatch(actions.createNewUserId())
+    }
+  },
+
+  createNewUserIdAsync: function() {
+    return (dispatch) => {
+      // server call
+
+      /*$.get('url', {
+        'success': (response) => {
+          dispatch(actions.createNewUserId(response.data))
+        }
+      })*/
+
+
+      setTimeout(()=> {
+        dispatch(actions.createNewUserId())
+      }, 2500)
+    }
+  }
+
+}
+
+export default actions

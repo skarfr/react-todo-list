@@ -1,31 +1,35 @@
 import React, { Component } from 'react'
 
+/**
+ * This component is a single UserInfo
+ */
 class UserInfo extends Component {
 
+
   handleNewId() {
-    this.props.actions.createNewUserId()
+    //dispatch an action
+    this.props.actions.createNewUserId();
   }
 
   handleNewIdIfOdd() {
-    this.props.actions.createNewUserIdIfOdd()
+    this.props.actions.createNewUserIdOdd();
   }
 
   handleNewIdAsync() {
-    this.props.actions.createNewUserIdAsync()
+    this.props.actions.createNewUserIdAsync();
   }
 
   render() {
     return (
-      <li>
-        <div>username: {this.props.user.username}</div>
-        <div>id: {this.props.user.id}</div>
-        <button onClick={this.handleNewId.bind(this)}>Update with random ID</button>
+      <div>
+        <div>{this.props.user.username}</div>
+        <div>{this.props.user.id}</div>
+        <button onClick={this.handleNewId.bind(this)}>Update with a random ID</button>
         <button onClick={this.handleNewIdIfOdd.bind(this)}>Update only if odd</button>
-        <button onClick={this.handleNewIdAsync.bind(this)}>Update async</button>
-      </li>
+        <button onClick={this.handleNewIdAsync.bind(this)}>Update Async</button>
+      </div>
     )
   }
-
 }
 
 export default UserInfo
